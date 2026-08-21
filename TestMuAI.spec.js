@@ -1,9 +1,32 @@
 import { test, expect } from '@playwright/test';
+import { chromium } from 'playwright';
+
+  test('Test Scenario 1', async () => {
+
+    const capabilities = {
+  browserName: 'Chrome',
+  browserVersion: 'latest',
+  'LT:Options': {
+    platform: 'Windows 10',
+    build: 'Playwright Sample Build',
+    name: 'Playwright Sample Test',
+    user: 'kumarane90',
+    accessKey: 'LT_wC7z8yJOz0HCzOYaPp1xbLCwrFHuaJYpyWkXXfI8WsQnOgd',
+    network: true,
+    video: true,
+    console: true,
+  },
+};
 
 
+  const browser = await chromium.connect({
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`,
+  });
 
-test('Test Scenario 1', async ({ page }) => {
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
+  
   await page.goto('https://www.testmuai.com/selenium-playground/');
 
   await page.locator('a[href="https://www.testmuai.com/selenium-playground/simple-form-demo/"]').click();
@@ -23,7 +46,30 @@ test('Test Scenario 1', async ({ page }) => {
  
 });
 
-test('Test Scenario 2', async ({ page }) => {
+test('Test Scenario 2', async () => {
+
+  const capabilities = {
+  browserName: 'Chrome',
+  browserVersion: 'latest',
+  'LT:Options': {
+    platform: 'Windows 10',
+    build: 'Playwright Sample Build',
+    name: 'Playwright Sample Test',
+    user: 'kumarane90',
+    accessKey: 'LT_wC7z8yJOz0HCzOYaPp1xbLCwrFHuaJYpyWkXXfI8WsQnOgd',
+    network: true,
+    video: true,
+    console: true,
+  },
+};
+
+
+  const browser = await chromium.connect({
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`,
+  });
+
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
   await page.goto('https://www.testmuai.com/selenium-playground/');
 
@@ -43,7 +89,30 @@ test('Test Scenario 2', async ({ page }) => {
 });
 
 
-test('Test Scenario 3', async ({ page }) => {
+test('Test Scenario 3', async () => {
+
+  const capabilities = {
+  browserName: 'Chrome',
+  browserVersion: 'latest',
+  'LT:Options': {
+    platform: 'Windows 10',
+    build: 'Playwright Sample Build',
+    name: 'Playwright Sample Test',
+    user: 'kumarane90',
+    accessKey: 'LT_wC7z8yJOz0HCzOYaPp1xbLCwrFHuaJYpyWkXXfI8WsQnOgd',
+    network: true,
+    video: true,
+    console: true,
+  },
+};
+
+
+  const browser = await chromium.connect({
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`,
+  });
+
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
   await page.goto('https://www.testmuai.com/selenium-playground/');
 
@@ -74,6 +143,8 @@ test('Test Scenario 3', async ({ page }) => {
 
   const successMessage = await page.locator('//*[@class="success-msg hidden"]').textContent();
 
+  
+ 
   const expectedMessage = 'Thanks for contacting us, we will get back to you shortly.';
   await expect(successMessage).toEqual(expectedMessage);
 
