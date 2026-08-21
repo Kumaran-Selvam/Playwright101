@@ -1,5 +1,28 @@
 import { test, expect } from '@playwright/test';
 
+set LT_USERNAME="kumarane90"
+set LT_ACCESS_KEY="LT_wC7z8yJOz0HCzOYaPp1xbLCwrFHuaJYpyWkXXfI8WsQnOgd"
+
+(async () => {
+  const capabilities = {
+    'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
+    'browserVersion': 'latest',
+    'LT:Options': {
+      'platform': 'Windows 10',
+      'build': 'Playwright Sample Build',
+      'name': 'Playwright Sample Test',
+      'user': process.env.LT_USERNAME,
+      'accessKey': process.env.LT_ACCESS_KEY,
+      'network': true,
+      'video': true,
+      'console': true
+    }
+  }
+
+  const browser = await chromium.connect({
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+  })
+
 test('Test Scenario 1', async ({ page }) => {
 
   await page.goto('https://www.testmuai.com/selenium-playground/');
