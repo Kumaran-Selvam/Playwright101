@@ -74,8 +74,6 @@ test('Test Scenario 3', async ({ page }) => {
 
   const successMessage = await page.locator('//*[@class="success-msg hidden"]').textContent();
 
-  
- //  '//*[@class="success-msg hidden"]'
   const expectedMessage = 'Thanks for contacting us, we will get back to you shortly.';
   await expect(successMessage).toEqual(expectedMessage);
 
